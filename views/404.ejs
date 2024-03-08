@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uh Oh!</title>
+  <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+
+<body tabindex="-1" class="bg-yellow-100">
+  <%- include('partials/navbar', {page: '/404'}) %>
+  
+
+
+  <div class="container mx-auto">
+
+    <div class="hero bg-yellow-200 rounded-lg p-6 border-dashed border-8 border-black">
+      <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">404 Error!</h1>
+
+          <p class="font-bold text-2xl"><%= message %>.</p>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lego Collection</title>
+  <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+
+<body tabindex="-1" class="bg-yellow-50">
+
+
+  <%- include('partials/navbar', {page:"/lego/sets"}) %>
+
+
+  <div class="container mx-auto">
+
+    <div class="hero bg-yellow-200 rounded-lg p-6 border-dashed border-8 border-black mb-10">
+        <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Collections!!!</h1>
+          <a href=""></a>
+        <a href=""></a>
+
+          <p class="py-6">Behold our sets!</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flex justify-center">
+      <a href="/lego/sets?theme=classic town" class="bg-white border-black border font-bold px-4 py-2 rounded-full mx-2 mb-8">Classic Town Sets</a>
+      <a href="/lego/sets?theme=supplemental" class="bg-white border-black border font-bold px-4 py-2 rounded-full mx-2 mb-8">Supplemental Sets</a>
+      <a href="/lego/sets?theme=technic" class="bg-white border-black border font-bold px-4 py-2 rounded-full mx-2 mb-8">Technic Sets</a>
+    </div>
+    
+
+    <div class="flex justify-center ">
+    <table class ="border-black border-8 rounded-xl bg-yellow-400 flex justify-center">
+    
+        <tbody>
+          <% sets.forEach(set => { %>
+            <tr class="h-6 border-dashed border-8 rounded-xl border-yellow-200 m-2 space-x-2 text-xl">
+                    <td class = "flex flex-col items-center">
+                    <img src= "<%= set.img_url %>" alt="Image for Set" height="200x" width="300x" class="border-solid border-4 border-black aspect-video m-5 rounded-xl ">
+                </td>
+              <div class = "inline-block justify-center ">
+                            <td class = "flex flex-col text-white font-semibold items-center">
+                                <%=set.name%> 
+                              </td>
+                      <td class = "flex flex-col text-white font-semibold items-center">
+                        Year: <%= set.year %>
+                      </td>
+                            <td class = "flex flex-col text-white font-semibold items-center">
+                                No Parts: <%= set.num_parts %>
+                              </td>
+                            </div>
+                        
+                              <td class = "flex flex-col  items-center">
+                                <a href="/lego/sets/<%= set.set_num %>" class="font-bold italic">Set Details - (Click here!)</a>
+                              </td>
+                            
+                            <td class = "flex flex-col items-center">
+                                <a href="/lego/sets?theme=<%= set.theme %>" class="font-bold italic">Theme Info - (Click here!) </a>
+                            </td>
+                            
+                            </div>
+                        </div>
+                    </div>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+      
+      
+
+
+</body>
+
+</html>
