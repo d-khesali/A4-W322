@@ -8,7 +8,7 @@
 * 
 *  Name: Daniel Khesali Student ID: 146228200 Date: 2024-03-05
 *
-*  Published URL: ___________________________________________________________
+*  Published URL: https://jade-embarrassed-hummingbird.cyclic.app/about
 *
 ********************************************************************************/
 
