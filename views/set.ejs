@@ -4,93 +4,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set Info</title>
+  <title>Lego Collection</title>
   <link rel="stylesheet" href="/css/main.css" />
+  <script>
+    document.addEventListener("DOMContentLoaded", async ()=>{
+
+        let res = await fetch("https://quotable.io/random");
+        let data = await res.json();
+
+        document.getElementById("quote").innerHTML = `"${data.content}"<br />- <em>${data.author}</em>`;
+    });
+  </script>
 
 </head>
 
-<body tabindex="-1" class=" bg-yellow-50">
+<body tabindex="-1">
 
-  <%- include('partials/navbar', {page:''}) %>
- 
+  <%- include('partials/navbar', {page: ''}) %>
 
+  <div class="container mx-auto p-4">
 
-  <div class="container mx-auto">
-
-    <div class="hero bg-yellow-200 rounded-lg p-6 border-dashed border-8 border-black">
+    <div class="hero bg-base-200 rounded-lg p-6">
       <div class="hero-content text-center ">
         <div class="max-w-md">
           <h1 class="text-5xl font-bold"><%= set.name %></h1>
 
-          <p class="h2">Below you will find detailed information about this set.</h2>
+          <p class="py-6">Below, you will find detailed information about the set: <%= set.name %></p>
+
         </div>
       </div>
     </div>
+
     <br />
-    
 
-<div class = "flex justify-center items-center ">
-<img src="<%- set.img_url %>" height = 200px width = 600px alt="photo for particular set." class= " border-8 rounded-lg border-red-800 aspect-video" >
-</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <img class="w-full rounded-lg"
+          src="<%= set.img_url %>"
+          alt=" Set Image" />
 
-<div class=" bg-yellow-100 p-1 overflow-x-auto self-center mt-8 mb-4 rounded-2xl border-4 border-black">
-  <table class="table border-collapse border-4  border-black px-24">
-    <thead>
-      <tr class = "text-black">
-        <th class="p-12 text-xl border-4  border-black">Name</th>
-        <th class="p-12 text-xl border-4  border-black">Year</th>
-        <th class="p-12 text-xl border-4  border-black">Theme</th>
-        <th class="p-12 text-xl border-4  border-black">Num of Parts</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-    <tfoot>
-      <tr class="m-4 text-black">
-        <td class="p-12 text-lg border-4  border-black"><%-set.name%></td>
-        <td class="p-12 text-lg border-4  border-black"><%-set.year%></td>
-        <td class="p-12 text-lg border-4  border-black"><%-set.theme_id%></td>
-        <td class="p-12 text-lg border-4  border-black"><%-set.num_parts%></td>
-      </tr>
-    </tfoot>
-  </table>
-</div>
+      </div>
+      <div class="prose">
 
+       <p>
+        <span class="font-bold">Set Name: </span> <%= set.name %> <br />
+        <span class="font-bold">Year Released: </span> <%= set.year %> <br />
+        <span class="font-bold">Theme: </span> <%= set.Theme.name %> <br />
+        <span class="font-bold">Number of Parts: </span> <%= set.num_parts %> <br /><br />
 
-<div class = " border-4 rounded-xl border-red-300 bg-yellow-100 my-2">
-  <div class="border-black rounded-xl p-4 flex flex-col items-center">
-    <p id="authorEle" class="text-center my-1 font-bold "></p>
-    <p id="quoteEle" class="underline text-center my-0 italic"></p>
+        <span id="quote"></span>
+        <br /><br />
+
+        <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success bg-yellow-400 border border-black">Edit Set</a>
+
+        <a class="btn btn-primary btn-sm" href="#" onclick="history.back(); return false;">RETURN</a>
+       </p>
+
+      </div>
+
+    </div>
+
   </div>
-</div>
-    
-    
-<!--Quote Here, gotta figure this out/add it later big trouble!!-->
-
-<script>
-  document.addEventListener("DOMContentLoaded",() =>{
-    fetch('https://api.quotable.io/random')
-    .then(response=>response.json())
-    .then(data =>{
-      const quoteEle =document.getElementById('quoteEle')
-      const authorEle = document.getElementById('authorEle')
-      quoteEle.textContent = `"${data.content}"`;
-      authorEle.textContent = `${data.author} once said..`;
-    })
-    .catch(error =>{
-      console.log("Something went wrong acquiring the quote:", error);
-    })
-  })
-</script>
-
-
-
-  <div class="flex justify-center">
-    <a href="#" onclick="history.back(); return false;" class="bg-yellow-50 hover:bg-yellow-200 text-black font-bold py-2 px-4 rounded border border-black">
-      Previous Page
-    </a>
-  </div>
-  
 </body>
 
 </html>
